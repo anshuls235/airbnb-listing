@@ -1,0 +1,192 @@
+{% extends "base.html" %}
+
+{% block title %}{{ listing.title }} | Dubai Marina{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12 mb-4">
+        <a href="/" class="btn btn-outline-secondary mb-3">
+            <i class="bi bi-arrow-left"></i> Back to All Listings
+        </a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-8">
+        <div class="detail-images mb-4">
+            <img src="{{ listing.image }}" class="img-fluid rounded main-image" alt="{{ listing.title }}">
+            <div class="row mt-2">
+                {% for i in range(1, 4) %}
+                <div class="col-4">
+                    <img src="{{ listing.image }}" class="img-fluid rounded thumbnail" alt="{{ listing.title }}">
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="card booking-card">
+            <div class="card-body">
+                <h3 class="card-title">₹{{ listing.price }}</h3>
+                <p class="text-muted">for 3 nights (May 22-25, 2025)</p>
+                
+                <div class="date-picker mb-3">
+                    <div class="row">
+                        <div class="col-6">
+                            <label>Check-in</label>
+                            <input type="text" class="form-control" value="May 22" readonly>
+                        </div>
+                        <div class="col-6">
+                            <label>Check-out</label>
+                            <input type="text" class="form-control" value="May 25" readonly>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mb-3">
+                    <label>Guests</label>
+                    <select class="form-select">
+                        <option>1 guest</option>
+                        <option selected>2 guests</option>
+                        <option>3 guests</option>
+                        <option>4 guests</option>
+                    </select>
+                </div>
+                
+                <div class="price-breakdown mb-3">
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>₹{{ listing.nightly_price }} x 3 nights</span>
+                        <span>₹{{ listing.price }}</span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>Service fee</span>
+                        <span>₹{{ listing.service_fee }}</span>
+                    </div>
+                    <hr>
+                    <div class="d-flex justify-content-between fw-bold">
+                        <span>Total</span>
+                        <span>₹{{ listing.total_price }}</span>
+                    </div>
+                </div>
+                
+                <a href="{{ listing.url }}" target="_blank" class="btn btn-danger w-100 mb-2">Book on Airbnb</a>
+                <button class="btn btn-outline-secondary w-100">Save to Wishlist</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-lg-8">
+        <div class="listing-details">
+            <h2>{{ listing.title }}</h2>
+            
+            <div class="d-flex align-items-center mb-3">
+                {% if listing.rating %}
+                <div class="rating me-3">
+                    <i class="bi bi-star-fill"></i> {{ listing.rating }} 
+                    <span class="text-muted">({{ listing.reviews }} reviews)</span>
+                </div>
+                {% endif %}
+                {% if listing.superhost %}
+                <div class="superhost-badge">
+                    <i class="bi bi-patch-check-fill"></i> Superhost
+                </div>
+                {% endif %}
+            </div>
+            
+            <p class="location mb-4">
+                <i class="bi bi-geo-alt-fill"></i> Dubai Marina, Dubai, United Arab Emirates
+                {% if listing.beach_distance %}
+                <span class="ms-2">{{ listing.beach_distance }} to beach</span>
+                {% endif %}
+            </p>
+            
+            <hr>
+            
+            <div class="highlights mb-4">
+                <h4>Highlights</h4>
+                <div class="row">
+                    {% if listing.beds %}
+                    <div class="col-md-4 mb-2">
+                        <div class="highlight-item">
+                            <i class="bi bi-person-sleep"></i>
+                            <div>
+                                <h6>{{ listing.beds }} bed{% if listing.beds > 1 %}s{% endif %}</h6>
+                                <p>Comfortable sleeping arrangements</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    
+                    {% if listing.beach_distance %}
+                    <div class="col-md-4 mb-2">
+                        <div class="highlight-item">
+                            <i class="bi bi-water"></i>
+                            <div>
+                                <h6>Beach Access</h6>
+                                <p>{{ listing.beach_distance }} to JBR Beach</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    
+                    {% if listing.cancellation %}
+                    <div class="col-md-4 mb-2">
+                        <div class="highlight-item">
+                            <i class="bi bi-calendar-check"></i>
+                            <div>
+                                <h6>Free Cancellation</h6>
+                                <p>Before May 17</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <hr>
+            
+            <div class="description mb-4">
+                <h4>About this place</h4>
+                <p>{{ listing.full_description }}</p>
+            </div>
+            
+            <hr>
+            
+            <div class="amenities mb-4">
+                <h4>What this place offers</h4>
+                <div class="row">
+                    {% for amenity in listing.amenities %}
+                    <div class="col-md-6 mb-2">
+                        <div class="amenity-item">
+                            <i class="bi {{ amenity.icon }}"></i> {{ amenity.name }}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            
+            <hr>
+            
+            <div class="location-section mb-4">
+                <h4>Location</h4>
+                <p>{{ listing.location_description }}</p>
+                <div class="map-container">
+                    <div class="ratio ratio-16x9">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14440.421814506275!2d55.125296387019654!3d25.07645238136442!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f6b5400f7ab63%3A0xb321956856d74191!2sDubai%20Marina%20-%20Dubai%20-%20United%20Arab%20Emirates!5e0!3m2!1sen!2sus!4v1650928558405!5m2!1sen!2sus" 
+                            width="600" 
+                            height="450" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
