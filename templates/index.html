@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}Dubai Marina Airbnb Listings{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="category-header">
+            <h2>All Listings in Dubai Marina</h2>
+            <p>Explore these amazing properties for your stay from May 22 to May 25, 2025</p>
+            <div class="d-flex mt-3">
+                <a href="/best" class="btn btn-outline-primary me-2">
+                    <i class="bi bi-star-fill"></i> Top Rated
+                </a>
+                <a href="/cheapest" class="btn btn-outline-success">
+                    <i class="bi bi-tags"></i> Best Deals
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row listing-grid">
+    {% for listing in listings %}
+    <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card listing-card h-100">
+            <div class="image-wrapper">
+                <img src="{{ listing.image }}" class="card-img-top" alt="{{ listing.title }}">
+                {% if listing.rating %}
+                <div class="rating-badge">
+                    <i class="bi bi-star-fill"></i> {{ listing.rating }}
+                    <small>({{ listing.reviews }})</small>
+                </div>
+                {% endif %}
+                <div class="price-badge">₹{{ listing.price }}</div>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{ listing.title }}</h5>
+                <div class="amenities mb-3">
+                    {% if listing.beds %}
+                    <span class="amenity"><i class="bi bi-person-sleep"></i> {{ listing.beds }} bed{% if listing.beds > 1 %}s{% endif %}</span>
+                    {% endif %}
+                    {% if listing.beach_distance %}
+                    <span class="amenity"><i class="bi bi-water"></i> {{ listing.beach_distance }} to beach</span>
+                    {% endif %}
+                    {% if listing.cancellation %}
+                    <span class="amenity"><i class="bi bi-calendar-check"></i> Free cancellation</span>
+                    {% endif %}
+                </div>
+                <p class="card-text">{{ listing.description }}</p>
+                <a href="/listing/{{ listing.id }}" class="btn btn-primary">View Details</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
