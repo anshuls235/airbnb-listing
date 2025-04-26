@@ -1,0 +1,351 @@
+:root {
+    --primary-color: #FF5A5F;
+    --secondary-color: #00A699;
+    --dark-color: #484848;
+    --light-color: #F7F7F7;
+    --accent-color: #FFB400;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--dark-color);
+    background-color: #f8f9fa;
+}
+
+/* Navbar */
+.navbar {
+    background-color: var(--primary-color);
+    padding: 15px 0;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0 10px;
+    font-weight: 500;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: #fff;
+}
+
+/* Banner */
+.banner {
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), 
+                url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') 
+                no-repeat center center/cover;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    color: white;
+    text-align: center;
+}
+
+.banner-content {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.banner h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.banner p {
+    font-size: 1.2rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Listing Cards */
+.listing-grid {
+    margin-top: 20px;
+}
+
+.listing-card {
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.listing-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.image-wrapper {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+}
+
+.card-img-top {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.listing-card:hover .card-img-top {
+    transform: scale(1.05);
+}
+
+.rating-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-weight: 600;
+    color: var(--dark-color);
+    font-size: 0.9rem;
+}
+
+.price-badge {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: var(--primary-color);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: 600;
+    color: white;
+}
+
+.rank-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: var(--accent-color);
+    color: white;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-weight: 700;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.card-title {
+    font-weight: 600;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    line-height: 1.4;
+}
+
+.amenities {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.amenity {
+    font-size: 0.85rem;
+    background-color: var(--light-color);
+    padding: 4px 10px;
+    border-radius: 15px;
+    color: var(--dark-color);
+    display: inline-flex;
+    align-items: center;
+}
+
+.amenity i {
+    margin-right: 5px;
+}
+
+.card-text {
+    color: #666;
+    font-size: 0.9rem;
+    margin-top: 10px;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: #e1484d;
+    border-color: #e1484d;
+}
+
+.btn-danger {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+.btn-danger:hover {
+    background-color: #e6a200;
+    border-color: #e6a200;
+}
+
+/* Category Pages */
+.category-header {
+    background-color: white;
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+    position: relative;
+    overflow: hidden;
+}
+
+.category-header h2 {
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.category-badge {
+    position: absolute;
+    top: 0;
+    right: 30px;
+    padding: 5px 15px;
+    color: white;
+    font-weight: 600;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.category-badge.best {
+    background-color: var(--secondary-color);
+}
+
+.category-badge.cheapest {
+    background-color: var(--accent-color);
+}
+
+/* Detail Page */
+.main-image {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.thumbnail {
+    height: 100px;
+    object-fit: cover;
+}
+
+.booking-card {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 20px;
+}
+
+.booking-card .card-title {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+}
+
+.price-breakdown {
+    background-color: var(--light-color);
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.highlight-item, .amenity-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.highlight-item i, .amenity-item i {
+    font-size: 1.5rem;
+    margin-right: 15px;
+    color: var(--secondary-color);
+}
+
+.highlight-item h6 {
+    margin-bottom: 0;
+    font-weight: 600;
+}
+
+.highlight-item p {
+    margin-bottom: 0;
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.map-container {
+    margin-top: 20px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.location, .rating, .superhost-badge {
+    display: flex;
+    align-items: center;
+}
+
+.location i, .rating i {
+    margin-right: 6px;
+    color: var(--primary-color);
+}
+
+.superhost-badge {
+    background-color: #efefef;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+.superhost-badge i {
+    color: var(--secondary-color);
+    margin-right: 5px;
+}
+
+/* Footer */
+footer {
+    background-color: var(--dark-color);
+    color: white;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .banner {
+        height: 300px;
+    }
+    
+    .banner h1 {
+        font-size: 2rem;
+    }
+    
+    .banner p {
+        font-size: 1rem;
+    }
+    
+    .category-header {
+        padding: 20px 15px;
+    }
+    
+    .category-badge {
+        position: static;
+        display: inline-block;
+        margin-top: 10px;
+        border-radius: 20px;
+    }
+    
+    .main-image {
+        height: 250px;
+    }
+    
+    .thumbnail {
+        height: 70px;
+        margin-bottom: 10px;
+    }
+}
